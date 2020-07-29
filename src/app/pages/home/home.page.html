@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-capitalize">Inicio</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="exit()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="chevron-up-circle-sharp"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button routerLink="/add"><ion-icon name="add"></ion-icon></ion-fab-button>
+      <ion-fab-button routerLink="/fav"><ion-icon name="star-sharp"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-slide *ngIf="numData == 0">
+    <h1>No hay datos</h1>
+  </ion-slide>
+
+    <ion-item *ngFor="let item of dataPost" [routerLink]="['/detalles/', item.id]">
+      <ion-label>
+        <h2>{{item.title}}</h2>
+        <h3>{{item.content}}</h3>
+        <p>By: {{item.creator}}</p>
+      </ion-label>
+    </ion-item>
+
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+    <ion-avatar slot="start" (click)="UPhoto()">
+      <img src="{{data.photo}}"/>
+    </ion-avatar>
+    <ion-label>Bienvenido {{data.username}}</ion-label>
+  </ion-item>
+</ion-footer>

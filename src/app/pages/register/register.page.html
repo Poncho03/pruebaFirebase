@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slide>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Registro</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form #formulario="ngForm">
+          <ion-item>
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-input
+              type="text"
+              name="username"
+              placeholder="Nombre de usuario"
+              [(ngModel)]="dataUser.username"
+              required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="at"></ion-icon>
+            <ion-input
+              type="email"
+              name="email"
+              placeholder="Escribe un correo"
+              [(ngModel)]="dataUser.email"
+              pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+              required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="shield"></ion-icon>
+            <ion-input
+              type="password"
+              name="pass"
+              placeholder="Escribe contraseña"
+              [(ngModel)]="dataUser.pass"
+              required>
+            </ion-input>
+          </ion-item>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-slide>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="success" (click)="registro(dataUser)" [disabled]="formulario.invalid">
+      Registrarme
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

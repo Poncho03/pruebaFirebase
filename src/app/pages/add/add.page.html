@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form #formulario="ngForm">
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input type="text" name="title" [(ngModel)]="dataPost.title" required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contenido</ion-label>
+      <ion-input type="text" name="content" [(ngModel)]="dataPost.content" required> </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="end" class="ion-text-right" color="medium">Por: {{dataPost.creator}}</ion-label>
+    </ion-item>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="danger" (click)="addPost()" [disabled]="formulario.invalid">
+      Agregar nuevo post
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
